@@ -18,22 +18,22 @@ module.exports = function(passport) {
 
   // Local Signup
   passport.use('local-signup', new LocalStrategy({
-    usernameField : 'email',
+    usernameField : 'name',
     passwordField : 'password',
     passReqToCallback : true
   },
-  function( req, email, password, done) {
+  function( req, name, password, done) {
     process.nextTick(function() {
-      User.findOne( { 'local.email' : email }, function(err, user) {
+      User.findOne( { 'local.name' : name }, function(err, user) {
         if (err) {
           return done(err);  
         }
 
         if (user) {
-          return done(null, false, req.flash('signupMessage', 'That email is taken' ));
+          return done(null, false, req.flash('signupMessage', 'That name is taken' ));
         } else {
           var newUser = new User();
-          newUser.local.email = email;
+          newUser.local.name = name;
           newUser.local.password = newUser.generateHash(password);
 
           newUser.save(function(err){
@@ -49,12 +49,12 @@ module.exports = function(passport) {
 
   // local login
   passport.use('local-login' , new LocalStrategy( {
-    usernameField : 'email',
+    usernameField : 'name',
     password : 'password',
     passReqToCallback : true
     },
-    function(req, email, password, done ) {
-      User.findOne({ 'local.email' : email }, function(err, user) {
+    function(req, name, password, done ) {
+      User.findOne({ 'local.name' : name }, function(err, user) {
         if (err) {
           return done(err);
         }

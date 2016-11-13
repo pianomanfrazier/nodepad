@@ -1,29 +1,67 @@
 extends layout
 
 block title
-  title profile page | #{user.local.email}
+  title profile page | #{user.local.name}
 
 block content
   .container
     .page-header.text-center
       h1
-        i.fa.fa-anchor 
-        | &nbsp Profile Page
-      a(href="/logout").btn-btn-default.btn-sm Logout
-
-      .row
-        .col-sm-6
-          .well
-            h3
-              i.fa.fa-user
-              | &nbsp Local
-            p
-              strong id:
-              | #{user._id}
-              br
-              strong email:
-              | #{user.local.email}
-              br
-              strong password:
-              | #{user.local.password}
-
+        i.fa.fa-pencil.fa-2x 
+        | &nbsp #{user.local.name}'s Notes
+      a(href="/logout").btn.btn-default.btn-lg Logout
+      hr
+      #noteTable
+        .table-responsive
+          table.table.table-bordered.table-striped.table-hover
+            thead
+              th ID
+              th Note
+              th Delete?
+              th Edit?
+            tbody
+              tr
+                td 1
+                td
+                  p
+                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
+                td
+                  button(type="button").btn.btn-warning.btn-sm Delete
+                td
+                  button(type="button").btn.btn-info.btn-sm Edit
+              tr
+                td 1
+                td
+                  p
+                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
+                td
+                  button(type="button").btn.btn-warning.btn-sm Delete
+                td
+                  button(type="button").btn.btn-info.btn-sm Edit
+              tr
+                td 1
+                td
+                  p
+                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
+                td
+                  button(type="button").btn.btn-warning.btn-sm Delete
+                td
+                  button(type="button").btn.btn-info.btn-sm Edit
+              tr
+                td 1
+                td
+                  p
+                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
+                td
+                  button(type="button").btn.btn-warning.btn-sm Delete
+                td
+                  button(type="button").btn.btn-info.btn-sm Edit
+              tr
+                td 1
+                td
+                  p
+                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
+                td
+                  button(type="button").btn.btn-warning.btn-sm Delete
+                td
+                  button(type="button").btn.btn-info.btn-sm Edit
