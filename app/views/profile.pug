@@ -1,0 +1,29 @@
+extends layout
+
+block title
+  title profile page | #{user.local.email}
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        i.fa.fa-anchor 
+        | &nbsp Profile Page
+      a(href="/logout").btn-btn-default.btn-sm Logout
+
+      .row
+        .col-sm-6
+          .well
+            h3
+              i.fa.fa-user
+              | &nbsp Local
+            p
+              strong id:
+              | #{user._id}
+              br
+              strong email:
+              | #{user.local.email}
+              br
+              strong password:
+              | #{user.local.password}
+

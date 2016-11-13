@@ -1,0 +1,29 @@
+extends layout
+
+block title
+  title Signup
+
+block content
+  .container
+    .col-sm-6.col-sm-offset-3
+      h1
+        i.fa.fa-sign-in
+        | &nbsp Signup
+      if message.length > 0
+        .alert.alert-danger message
+
+      form(action="/signup" method="post")
+        .form-group
+          label Email
+          input(type="text" name="email").form-control
+        .form-group
+          label Passord
+          input(type="password" name="password").form-control
+        button(type="submit").btn.btn-warning.btn-lg Signup
+      hr
+      p 
+        | Already have an acount? 
+        a(href="/login") Login 
+      p
+        | Or go &nbsp
+        a(href="/") Home
