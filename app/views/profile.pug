@@ -1,7 +1,7 @@
 extends layout
 
 block title
-  title profile page | #{user.local.name}
+  title #{user.local.name}'s Notes | NodePad
 
 block content
   .container
@@ -11,57 +11,20 @@ block content
         | &nbsp #{user.local.name}'s Notes
       a(href="/logout").btn.btn-default.btn-lg Logout
       hr
-      #noteTable
-        .table-responsive
-          table.table.table-bordered.table-striped.table-hover
-            thead
-              th ID
-              th Note
-              th Delete?
-              th Edit?
-            tbody
-              tr
-                td 1
-                td
-                  p
-                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
-                td
-                  button(type="button").btn.btn-warning.btn-sm Delete
-                td
-                  button(type="button").btn.btn-info.btn-sm Edit
-              tr
-                td 1
-                td
-                  p
-                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
-                td
-                  button(type="button").btn.btn-warning.btn-sm Delete
-                td
-                  button(type="button").btn.btn-info.btn-sm Edit
-              tr
-                td 1
-                td
-                  p
-                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
-                td
-                  button(type="button").btn.btn-warning.btn-sm Delete
-                td
-                  button(type="button").btn.btn-info.btn-sm Edit
-              tr
-                td 1
-                td
-                  p
-                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
-                td
-                  button(type="button").btn.btn-warning.btn-sm Delete
-                td
-                  button(type="button").btn.btn-info.btn-sm Edit
-              tr
-                td 1
-                td
-                  p
-                    Bacon ipsum dolor amet andouille salami fatback pig sausage jowl picanha strip steak pork loin pork chop. Shoulder hamburger tail boudin frankfurter cow capicola jerky kielbasa ground round shankle alcatra pig bacon. Venison andouille fatback doner chicken kevin. Turkey short ribs ribeye, sirloin boudin fatback pastrami chuck pig short loin alcatra cupim tail.
-                td
-                  button(type="button").btn.btn-warning.btn-sm Delete
-                td
-                  button(type="button").btn.btn-info.btn-sm Edit
+      h2 Create New Note
+      #addNote
+        textarea(cols=40 rows=5 id="note-text")
+        button(type="button" id="create-note").btn.btn-success.btn-lg Create Note 
+      hr
+      h2 Your notes
+      .table-responsive.text-left
+        table(id="noteTable").table.table-bordered.table-striped.table-hover
+          thead
+            th Note
+            th Options
+            th 
+          tbody
+
+block scripts
+  script(src="notes.js")
+  
