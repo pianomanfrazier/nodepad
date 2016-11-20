@@ -19,7 +19,7 @@ function editNote() {
   var note = $(this).parent().siblings(".note").text();
   var row = $(this).closest("tr");
   console.log(note);
-  row.replaceWith("<tr><td class=\"note\"><textarea>" + note + "</textarea></td><td><button class=\"submit-edit btn btn-success btn-sm\" type=\"button\">Submit Edit</button></td><td></td></tr>");
+  row.replaceWith("<tr><td class=\"note\"><textarea class=\"form-control\">" + note + "</textarea></td><td><button class=\"submit-edit btn btn-success btn-sm\" type=\"button\">Submit Edit</button></td><td></td></tr>");
 }
 
 function submitEdit() {
