@@ -3,8 +3,10 @@
   height: 100%;
 }
 
-.note {
-  width: 80%;
+#addNote textarea {
+  width: 100%;  
 }
 
-
+thead th:first-child {
+  width: 80%;
+}
