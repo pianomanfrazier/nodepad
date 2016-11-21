@@ -11,7 +11,10 @@ block content
         | &nbsp #{user.local.name}'s Notes
       a(href="/logout").btn.btn-default.btn-lg Logout
       hr
-      #addNote.form-group
+      #addNote.form-group.text-left
+        label(for="note-title") Title:
+        input(type="text" id="note-title").form-control
+        label(for="note-text") Note:
         textarea(id="note-text").form-control
         br
         button(type="button" id="create-note").btn.btn-success.btn-lg Create Note 
@@ -20,6 +23,8 @@ block content
       .table-responsive.text-left
         table(id="noteTable").table.table-bordered.table-striped.table-hover
           thead
+            th ID
+            th Title
             th Note
             th Options
             th
