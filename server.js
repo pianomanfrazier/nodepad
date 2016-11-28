@@ -12,7 +12,7 @@ var session      = require('express-session');
 var app      = express();
 var port     = process.env.PORT || 3000;
 
-var configDB = require('./config/database.js');
+var configDB = require('./config/database');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
@@ -36,7 +36,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+var routes = require('./app/routes/routes')(passport); // load our routes and pass in our app and fully configured passport
+var api = require('./app/routes/api')(passport);
+app.use('/', routes);
+app.use('/', api);
 
 // launch ======================================================================
 app.listen(port);

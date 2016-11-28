@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  .container
+    .col-sm-6.col-sm-offset-3
+      h1 Test page 
+      if message.length > 0
+        .alert.alert-success #{message}

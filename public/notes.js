@@ -3,6 +3,18 @@
 var id = 0;
 
 $( document ).ready( function() {
+  //need to load the table from the database
+  //upon startup
+
+  //get json and for each into the table
+  var tBody = $("tbody");
+  $.getJSON("/notes", function(data) {
+    console.log(data);
+    $.each(data, function(i, note) {
+      tBody.append(newRow(note._id, note.title, note.note));
+    });
+  });
+
   var table = $("#noteTable");
   var add = $("#create-note");
   table.on("click",".del-note", deleteNote );
@@ -14,8 +26,17 @@ $( document ).ready( function() {
 function deleteNote() {
   var x = confirm("Delete this note?");
   if (x) {
+    var id = $(this).parent().siblings(".id").text();
     $(this).closest("tr").remove();
+
+    //ajax call to db DEL
+    $.ajax({
+      url: "/notes/" + id,
+      type: "DELETE",
+      success: null
+    });
   }
+
 }
 
 function editNote() {
@@ -33,6 +54,14 @@ function submitEdit() {
   var row = $(this).closest("tr");
   console.log(note);
   row.replaceWith(newRow(id, title,  note));
+
+  //ajax call to db UPDATE
+  $.post({
+    url: "/notes/" + id,
+    data: { "note" : note, "title" : title },
+    success: null,
+    dataType: "json"
+  });
 }
 
 function addNote() {
@@ -40,9 +69,18 @@ function addNote() {
   var noteTitle = $("#note-title");
   var note = noteArea.val();
   var title = noteTitle.val();
-  $("tbody").append(newRow(id++, title, note));
   noteArea.val(''); //clear the textarea
   noteTitle.val(''); //clear the textarea
+
+  //ajax call to db CREATE
+  $.post({
+    url: "/notes",
+    data: { "note" : note, "title" : title },
+    success: function(data) {
+      $("tbody").append(newRow(data._id, data.title, data.note));
+    },
+    dataType: "json"
+  });
 }
 
 function newRow(id, title, note) {
