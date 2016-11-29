@@ -24,9 +24,10 @@ $( document ).ready( function() {
 });
 
 function deleteNote() {
-  var x = confirm("Delete this note?");
+  var id = $(this).parent().siblings(".id").text();
+  var title = $(this).parent().siblings(".title").text();
+  var x = confirm("Delete this note?\n\nTitle: " + title + "\nID: " + id);
   if (x) {
-    var id = $(this).parent().siblings(".id").text();
     $(this).closest("tr").remove();
 
     //ajax call to db DEL
