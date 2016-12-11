@@ -37,6 +37,14 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 var routes = require('./app/routes/routes')(passport); // load our routes and pass in our app and fully configured passport
+//error handling
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: err
+  });
+});
 var api = require('./app/routes/api')(passport);
 app.use('/', routes);
 app.use('/', api);

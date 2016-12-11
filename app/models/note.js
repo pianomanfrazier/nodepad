@@ -1,9 +1,18 @@
 var mongoose = require('mongoose');
 
 var noteSchema = mongoose.Schema({
-  note : { type: String, required: true },
-  title : { type: String, required: true, unique: true },
-  user : { type : String, required : true },
+  note : {
+    type: String,
+    required: [ true, "Note cannot be empty" ]
+  },
+  title : {
+    type: String,
+    required: true,
+    unique: [ true, "Title already in use" ]
+  },
+  user : {
+    type : String, required : true
+  },
   created_at : Date,
   updated_at : Date
 });
