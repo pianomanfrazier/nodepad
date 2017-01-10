@@ -30,7 +30,7 @@ app.set('views', path.join(__dirname, './app/views'));
 app.set('view engine', 'pug'); // set up pug for templating
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: '' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
